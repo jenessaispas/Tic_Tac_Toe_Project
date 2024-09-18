@@ -13,6 +13,8 @@ public class Main {
     static String txtWin = "Herzlichen Glückwunsch du hast gewonnen ";
     static String playerNameX;
     static String playerNameO;
+    static String txtWrongInput = "Das ist eine ungültige Eingabe. Gib bitte nur eine der zur Auswahl stehenden Zahlen " +
+            "auf dem Spielfeld an!";
 
     // Deklaration sowie Formulierung der eigenen Methoden
     //Methode zum Ausgeben des Spielfeldes
@@ -42,8 +44,7 @@ public class Main {
                 position = playerInput.nextInt();
                 //Auffangen einer Exception (falsche Eingabe) in einem catch-Block.
             } catch (InputMismatchException wrongChar) {
-                System.out.println("Das ist eine ungültige Eingabe. Gib bitte nur eine der zur Auswahl stehenden Zahlen " +
-                        "auf dem Spielfeld an!");
+                System.out.println(txtWrongInput);
                 continue;
             }
             if (position < 1 || position > 9) {
@@ -124,6 +125,9 @@ public class Main {
                         playground[2][2] = playerSymbol;
                     }
                     break;
+                default:
+                    System.out.println(txtWrongInput);
+                    continue;
             }
             printPlayground(playground);
             break;
