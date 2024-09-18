@@ -9,7 +9,7 @@ public class Main {
     static char[][] playground = new char[3][3];
     static char playerSymbol;
     static int count = 0;
-    static String txtFilled = "This field is already occupied, please select one of the free fields:";
+    static String txtFilled = "This field is already occupied, select one of the free fields, ";
     static String txtWin = "Congratulations you won ";
     static String playerNameX;
     static String playerNameO;
