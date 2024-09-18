@@ -10,7 +10,7 @@ public class Main {
     static char playerSymbol;
     static int count = 0;
     static String txtFilled = "Dieses Feld ist bereits belegt, bitte wähle eines der freien Felder aus: ";
-    static String txtWin = "Herzlichen Glückwunsch du hast gewonnen: ";
+    static String txtWin = "Herzlichen Glückwunsch du hast gewonnen ";
     static String playerNameX;
     static String playerNameO;
 
@@ -135,35 +135,27 @@ public class Main {
         // Überprüfung der Symbole ob sie in einer gewünschten Reihenfolge liegen, um das Spiel zu gewinnen:
         //Oberste Zeile. Zahlenreihe  1, 2, 3.
         if (playground[0][0] == playerSymbol && playground[0][1] == playerSymbol && playground[0][2] == playerSymbol) {
-            System.out.println(txtWin);
             return true;
             //Mittlere Zeile. Zahlenreihe 4, 5, 6.
         } else if (playground[1][0] == playerSymbol && playground[1][1] == playerSymbol && playground[1][2] == playerSymbol) {
-            System.out.println(txtWin);
             return true;
             //Unterste Zeile. Zahlenreihe 7, 8, 9.
         } else if (playground[2][0] == playerSymbol && playground[2][1] == playerSymbol && playground[2][2] == playerSymbol) {
-            System.out.println(txtWin);
             return true;
             //Linke Spalte. Zahlenreihe 1, 4, 7.
         } else if (playground[0][0] == playerSymbol && playground[1][0] == playerSymbol && playground[2][0] == playerSymbol) {
-            System.out.println(txtWin);
             return true;
             //Mittlere Spalte. Zahlenreihe 2, 5, 8.
         } else if (playground[0][1] == playerSymbol && playground[1][1] == playerSymbol && playground[2][1] == playerSymbol) {
-            System.out.println(txtWin);
             return true;
             //Rechte Spalte. Zahlenreihe 3, 6, 9.
         } else if (playground[0][2] == playerSymbol && playground[1][2] == playerSymbol && playground[2][2] == playerSymbol) {
-            System.out.println(txtWin);
             return true;
             //Diagonale links Oben nach rechts Unten. Zahlenreihe 1, 5, 9.
         } else if (playground[0][0] == playerSymbol && playground[1][1] == playerSymbol && playground[2][2] == playerSymbol) {
-            System.out.println(txtWin);
             return true;
             // Diagonale rechts Oben nach links Untern. Zahlenreihe 3, 5, 7.
         } else if (playground[0][2] == playerSymbol && playground[1][1] == playerSymbol && playground[2][0] == playerSymbol) {
-            System.out.println(txtWin);
             return true;
         }
         return false;
@@ -186,21 +178,25 @@ public class Main {
         printPlayground(playground);
         //Spielablauf im Rahmen der maximalen Rundenanzahl.
         while (count < 9) {
-            if (youWin(playerSymbol, playground)) {
+            if (youWin(playerSymbol, playground) && playerSymbol ==  'X') {
+                System.out.println(txtWin+playerNameX+" !!!");
+                break;
+            }else if (youWin(playerSymbol, playground) && playerSymbol == 'O') {
+                System.out.println(txtWin+playerNameO+" !!!");
                 break;
             }
             //Auswahl welcher Spieler an der Reihe ist seinen Zug zu machen.
             else if (count % 2 == 0) {
                 playerSymbol = 'X';
                 setPosition(playerSymbol, playground);
-                txtWin = txtWin +playerNameX;
             } else {
                 playerSymbol = 'O';
                 setPosition(playerSymbol, playground);
-                txtWin = txtWin +playerNameO;
             }
             count++;
-            System.out.println("Unentschieden ihr Pfeifen!");
+        }
+        if (youWin(playerSymbol,playground) == false && count == 9) {
+            System.out.println("Unentschieden!");
         }
     }
 }
