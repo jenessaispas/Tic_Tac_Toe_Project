@@ -48,6 +48,7 @@ public class Main {
                 continue;
             }
             if (position < 1 || position > 9) {
+                System.out.println(txtWrongInput);
                 continue;
             }
             //Checking if the position is already placed whit a playersymbol
