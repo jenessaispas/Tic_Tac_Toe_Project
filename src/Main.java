@@ -66,33 +66,25 @@ public class Main {
 
     //Formulate the winning condition in your own method
     public static boolean youWin(char playerSymbol, char[][] playground) {
-        // Checking the symbols to see if they are in the desired order to win the game:
-        //Top line. Number series  1, 2, 3.
-        if (playground[0][0] == playerSymbol && playground[0][1] == playerSymbol && playground[0][2] == playerSymbol) {
-            return true;
-            //Middle line. Number series 4, 5, 6.
-        } else if (playground[1][0] == playerSymbol && playground[1][1] == playerSymbol && playground[1][2] == playerSymbol) {
-            return true;
-            //Bottom line. Number series 7, 8, 9.
-        } else if (playground[2][0] == playerSymbol && playground[2][1] == playerSymbol && playground[2][2] == playerSymbol) {
-            return true;
-            //Left column. Number series 1, 4, 7.
-        } else if (playground[0][0] == playerSymbol && playground[1][0] == playerSymbol && playground[2][0] == playerSymbol) {
-            return true;
-            //Middle column. Number series 2, 5, 8.
-        } else if (playground[0][1] == playerSymbol && playground[1][1] == playerSymbol && playground[2][1] == playerSymbol) {
-            return true;
-            //Right column. Number series 3, 6, 9.
-        } else if (playground[0][2] == playerSymbol && playground[1][2] == playerSymbol && playground[2][2] == playerSymbol) {
-            return true;
-            //Diagonal left top to right bottom. Number series 1, 5, 9.
-        } else if (playground[0][0] == playerSymbol && playground[1][1] == playerSymbol && playground[2][2] == playerSymbol) {
+        //Checking the symbols to see if they are in the desired order to win the game:
+        //Horizontal number series
+        for (int z = 0; z < 3; z++) {
+            if (playground[z][0] == playerSymbol && playground[z][1] == playerSymbol && playground[z][2] == playerSymbol) {
+                return true;
+            }
+        }
+        //Vertical number series
+        for (int s = 0; s < 3; s++) {
+            if (playground[0][s] == playerSymbol && playground[1][s] == playerSymbol && playground[2][s] == playerSymbol) {
+                return true;
+            }
+        }
+        //Diagonal left top to right bottom. Number series 1, 5, 9.
+        if (playground[0][0] == playerSymbol && playground[1][1] == playerSymbol && playground[2][2] == playerSymbol) {
             return true;
             //Diagonal right top to left bottom. Number series 3, 5, 7.
-        } else if (playground[0][2] == playerSymbol && playground[1][1] == playerSymbol && playground[2][0] == playerSymbol) {
-            return true;
-        }
-        return false;
+        } else
+            return playground[0][2] == playerSymbol && playground[1][1] == playerSymbol && playground[2][0] == playerSymbol;
     }
 
     public static void main(String[] args) {
